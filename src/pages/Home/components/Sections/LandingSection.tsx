@@ -15,7 +15,6 @@ export const LandingSection = () => {
   const animation3 = useAnimation();
 
   useEffect(() => {
-    console.log("Element is in view: ", inView);
     if (inView) {
       animation.start({
         opacity: 1,
@@ -67,11 +66,11 @@ export const LandingSection = () => {
             William
           </motion.h2>
           <motion.p className="text-lg" animate={animation3}>
-            A frontend engineer
+            A frontend engineer.
           </motion.p>
         </div>
         <div className="mt-64 flex flex-col justify-center text-center items-center">
-          <p className="mb-2">Scroll down to explore my work</p>
+          <p className="mb-2">Scroll down to explore my space.</p>
           <BsMouse size={30} />
         </div>
       </Container>

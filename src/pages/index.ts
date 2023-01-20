@@ -1,2 +1,2 @@
-export * from "~/pages/Guestbook";
-export * from "~/pages/Home";
+export * from "./Guestbook";
+export * from "./Home";

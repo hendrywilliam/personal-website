@@ -12,7 +12,6 @@ export const About = () => {
   const animation = useAnimation();
 
   useEffect(() => {
-    console.log("Element is in view: ", inView);
     if (inView) {
       animation.start({
         transition: {
@@ -52,7 +51,7 @@ export const About = () => {
               <span className="font-medium">
                 HTML5, CSS3, Javascript (ES6+), React.js, Next.js, Typescript,
                 Framer Motion, Node.js, Zustand, Redux, Tailwind CSS, Bootstrap,
-                Chakra UI
+                Chakra UI.
               </span>
             </p>
           </motion.div>
