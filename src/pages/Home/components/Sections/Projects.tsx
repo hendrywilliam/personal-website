@@ -1,15 +1,40 @@
 import { Container } from "../Elements";
 import { motion } from "framer-motion";
 import { BiLinkExternal } from "react-icons/bi";
+import { useEffect } from "react";
+import { useInView } from "react-intersection-observer";
+import { useAnimation } from "framer-motion";
 
 export const Projects = () => {
+  const { ref, inView } = useInView({ threshold: 0.4 });
+  const animation = useAnimation();
+
+  useEffect(() => {
+    if (inView) {
+      animation.start({
+        opacity: 1,
+        transition: {
+          duration: 1,
+        },
+      });
+    }
+
+    if (!inView) {
+      animation.start({ opacity: 0 });
+    }
+  }, [inView]);
+
   return (
     <>
       <Container
         styles="min-h-screen h-screen mt-5 w-full flex flex-col items-center justify-center"
         id="projects-section"
       >
-        <div className="h-1/2 w-full flex flex-col items-center justify-center">
+        <motion.div
+          ref={ref}
+          className="h-1/2 w-full flex flex-col items-center justify-center"
+          animate={animation}
+        >
           <motion.div className="w-1/4">
             <p className="text-6xl font-extrabold">Projects</p>
           </motion.div>
@@ -55,7 +80,7 @@ export const Projects = () => {
             </p>
             <p className="mt-2">And many more...</p>
           </motion.div>
-        </div>
+        </motion.div>
       </Container>
     </>
   );

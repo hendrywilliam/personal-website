@@ -3,6 +3,7 @@ import { MainLayout } from "~/components";
 import { LandingSection } from "./components";
 import { About } from "./components";
 import { Projects } from "./components";
+import { Connect } from "./components";
 
 export const Home = () => {
   return (
@@ -12,6 +13,7 @@ export const Home = () => {
         <LandingSection />
         <About />
         <Projects />
+        <Connect />
       </MainLayout>
     </>
   );
