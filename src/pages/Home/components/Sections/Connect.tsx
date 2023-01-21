@@ -35,7 +35,7 @@ export const Connect = () => {
     <>
       <Container
         styles="min-h-screen h-screen w-full flex flex-col items-center justify-center"
-        id="connect-section"
+        id="connect"
       >
         <motion.div ref={ref} className="w-1/4 h-max">
           <motion.p className="text-6xl font-extrabold" animate={animation}>
