@@ -38,7 +38,7 @@ export const About = () => {
           className="h-1/2 w-full flex flex-col items-center justify-center"
         >
           <motion.div className="w-1/4" animate={animation}>
-            <p className="text-6xl font-extrabold">About</p>
+            <p className="text-6xl font-extrabold">About.</p>
             <p className="text-lg mt-2">
               Hello there, my name is Hendri William, I am a frontend engineer
               based in Indonesia. I love to create things like websites,
