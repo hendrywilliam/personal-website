@@ -28,7 +28,7 @@ export const Projects = () => {
     <>
       <Container
         styles="min-h-screen h-screen mt-5 w-full flex flex-col items-center justify-center"
-        id="projects-section"
+        id="projects"
       >
         <motion.div
           ref={ref}

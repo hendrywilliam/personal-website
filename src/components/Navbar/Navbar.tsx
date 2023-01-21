@@ -1,4 +1,6 @@
 import { motion, useScroll } from "framer-motion";
+import { Link, NavLink } from "react-router-dom";
+import { HashLink } from "react-router-hash-link";
 
 export const Navbar = () => {
   const { scrollYProgress } = useScroll();
@@ -10,25 +12,25 @@ export const Navbar = () => {
           🗲 HENDRI WILLIAM
         </p>
         <ul className="flex flex-row flex-auto w-1/4 justify-evenly text-center">
-          <li>
-            <a href="#about" className="font-extrabold rounded-xl w-4">
+          <li className="font-extrabold rounded-xl w-max">
+            <HashLink smooth to="/#about">
               About
-            </a>
+            </HashLink>
           </li>
-          <li>
-            <a href="" className="font-extrabold rounded-xl w-4">
+          <li className="font-extrabold rounded-xl w-max">
+            <HashLink smooth to="/#projects">
               Projects
-            </a>
+            </HashLink>
           </li>
           <li>
-            <a href="" className="font-extrabold rounded-xl w-4">
+            <Link to={"/guestbook"} className={"font-extrabold rounded-xl w-4"}>
               Guestbook
-            </a>
+            </Link>
           </li>
-          <li>
-            <a href="" className="font-extrabold rounded-xl w-4">
+          <li className="font-extrabold rounded-xl w-max">
+            <HashLink smooth to="/#connect">
               Connect
-            </a>
+            </HashLink>
           </li>
         </ul>
       </div>
