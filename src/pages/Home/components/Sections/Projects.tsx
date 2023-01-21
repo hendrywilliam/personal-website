@@ -36,7 +36,7 @@ export const Projects = () => {
           animate={animation}
         >
           <motion.div className="w-1/4">
-            <p className="text-6xl font-extrabold">Projects</p>
+            <p className="text-6xl font-extrabold">Projects.</p>
           </motion.div>
           <motion.div className="w-1/4">
             <p className="text-lg mt-2">
