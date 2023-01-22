@@ -32,7 +32,7 @@ export const Guestbook = () => {
     }
 
     if (!inView) {
-      animation.start({ opacity: 0, y: -100 });
+      animation.start({ opacity: 0, y: -150 });
     }
   }, [inView]);
 
@@ -45,24 +45,24 @@ export const Guestbook = () => {
       <Navbar />
       <motion.div
         ref={ref}
-        className="pt-64 h-max flex justify-center items-center"
+        className="pt-16 xl:pt-32 h-full flex justify-center items-center"
         animate={animation}
       >
-        <div className="p-12 w-1/4 flex flex-col gap-2">
-          <p className="text-6xl font-extrabold">Guestbook.</p>
+        <div className="w-full xl:w-1/4 flex flex-col gap-2 p-4 xl:p-0">
+          <p className="text-3xl xl:text-6xl font-extrabold">Guestbook.</p>
           <p>
             Please <span className="font-bold">do not spam</span> and show some
             respect.
           </p>
           <input
-            className="pb-2 focus:outline-none bg-black border-b-2 border-white"
+            className="text-sm xl:text-base pb-2 focus:outline-none bg-black border-b-2 border-white"
             type="text"
             placeholder="Your name"
             onChange={(e) => setName(e.target.value)}
             required
           />
           <textarea
-            className="pb-2 mt-3 focus:outline-none bg-black border-b-2 border-white resize-none"
+            className="text-sm xl:text-base pb-2 mt-3 focus:outline-none bg-black border-b-2 border-white resize-none"
             placeholder="Your feedback"
             onChange={(e) => setContent(e.target.value)}
             required
@@ -83,11 +83,8 @@ export const Guestbook = () => {
           </div>
         </div>
       </motion.div>
-      <motion.div
-        className="w-full h-max pb-10 flex justify-center"
-        animate={animation}
-      >
-        <ul className="w-[370px] flex flex-col gap-2">
+      <motion.div className="w-full h-max flex justify-center p-4">
+        <ul className="w-full xl:w-1/4 flex flex-col gap-2">
           {comments.map((comment: any) => {
             return (
               <List
