@@ -35,13 +35,13 @@ export const Card = ({ title, children, uri }: Props) => {
     <>
       <button
         ref={ref}
-        className="border-2 bg-black border-white rounded-xl basis-1/2"
+        className="border-2 bg-black border-white rounded-xl basis-1/2 p-2 xl:p-0"
       >
         <a
           href={uri}
           className="text-center w-full h-full flex flex-col justify-center  items-center"
         >
-          <p className="mb-5">{title}</p>
+          <p className="xl:mb-5">{title}</p>
           <motion.span animate={animation}>{children}</motion.span>
         </a>
       </button>

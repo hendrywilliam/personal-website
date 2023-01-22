@@ -6,7 +6,7 @@ type MainLayoutProps = {
 
 export const MainLayout = ({ children }: MainLayoutProps) => {
   return (
-    <div className="min-h-screen min-w-screen h-max bg-black scroll-smoth">
+    <div className="min-h-screen min-w-screen h-max bg-black scroll-smooth">
       {children}
     </div>
   );

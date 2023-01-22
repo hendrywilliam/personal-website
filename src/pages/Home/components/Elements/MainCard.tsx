@@ -39,9 +39,9 @@ export const MainCard = ({ title }: MainCardProps) => {
       >
         <a
           href="https://github.com/hendrywilliam"
-          className="text-center w-full h-full flex flex-col justify-center  items-center"
+          className="text-center w-full h-full flex flex-col justify-center  items-center p-2 xl:p-0"
         >
-          <p className="mb-5 text-lg">{title}</p>
+          <p className="xl:mb-5 text-lg">{title}</p>
           <motion.span animate={animation}>
             <FaGithub size={40} />
           </motion.span>

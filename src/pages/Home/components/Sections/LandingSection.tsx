@@ -40,8 +40,8 @@ export const LandingSection = () => {
     }
 
     if (!inView) {
-      animation.start({ opacity: 0, x: 150 });
-      animation2.start({ opacity: 0, x: -150 });
+      animation.start({ opacity: 0 });
+      animation2.start({ opacity: 0 });
       animation3.start({ opacity: 0, y: 50 });
     }
   }, [inView]);
@@ -49,29 +49,31 @@ export const LandingSection = () => {
   return (
     <>
       <Container
-        styles="min-h-screen h-screen mt-16 px-64 pt-64 text-center"
+        styles="w-full h-max xl:h-screen mt-16 xl:px-64 pt-32 xl:pt-64 text-center"
         id={"landing-section"}
       >
-        <div ref={ref}>
+        <div ref={ref} className="h-full">
           <motion.h2
-            className="text-9xl font-extrabold tracking-tighter"
+            className="text-7xl lg:text-9xl font-extrabold tracking-tighter"
             animate={animation}
           >
             Hendri
           </motion.h2>
           <motion.h2
-            className="text-9xl font-extrabold tracking-tighter"
+            className="text-7xl lg:text-9xl font-extrabold tracking-tighter"
             animate={animation2}
           >
             William
           </motion.h2>
-          <motion.p className="text-lg" animate={animation3}>
+          <motion.p className="text-md lg:text-base" animate={animation3}>
             A frontend engineer.
           </motion.p>
-        </div>
-        <div className="mt-64 flex flex-col justify-center text-center items-center">
-          <p className="mb-2">Scroll down to explore my space.</p>
-          <BsMouse size={30} />
+          <div className="mt-48 xl:mt-64 flex flex-col justify-center text-center items-center">
+            <p className="mb-2 text-sm xl:text-base">
+              Scroll down to explore my space.
+            </p>
+            <BsMouse size={20} />
+          </div>
         </div>
       </Container>
     </>

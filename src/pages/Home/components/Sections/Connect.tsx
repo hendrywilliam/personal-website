@@ -37,13 +37,16 @@ export const Connect = () => {
         styles="min-h-screen h-screen w-full flex flex-col items-center justify-center"
         id="connect"
       >
-        <motion.div ref={ref} className="w-1/4 h-max">
-          <motion.p className="text-6xl font-extrabold" animate={animation}>
+        <motion.div ref={ref} className="w-full xl:w-2/4 h-max px-4 xl:px-0">
+          <motion.p
+            className="text-5xl xl:text-7xl font-extrabold"
+            animate={animation}
+          >
             Lets connect!
           </motion.p>
-          <div className="flex flex-row gap-3 mt-5 h-max">
+          <div className="flex flex-col xl:flex-row gap-3 mt-5 h-max">
             <MainCard title="Github" />
-            <div className="basis-1/2 h-64 grid grid-rows-2 grid-flow-col gap-2">
+            <div className="basis-1/2 h-64 grid grid-rows-4 xl:grid-rows-2 grid-flow-col gap-2">
               <Card
                 title="Spotify"
                 uri="https://open.spotify.com/user/greendayaddicted"
