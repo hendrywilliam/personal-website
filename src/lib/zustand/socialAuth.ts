@@ -1,12 +1,18 @@
 import { create } from "zustand";
 import { supabase } from "../supabase";
 
-type socialAuth = {
-  credential: object | null | string;
+type SocialAuth = {
+  credential: object | null | string | undefined;
   status: string;
   loginGithub: () => void;
   getUser: () => void;
   logout: () => void;
+};
+
+type UserProps = {
+  user?: {
+    identities?: any;
+  };
 };
 
 const initialState = {
@@ -14,7 +20,7 @@ const initialState = {
   status: "",
 };
 
-export const socialAuth = create<socialAuth>()((set) => ({
+export const socialAuth = create<SocialAuth>()((set) => ({
   ...initialState,
   loginGithub: async () => {
     const { data, error } = await supabase.auth.signInWithOAuth({
@@ -28,7 +34,8 @@ export const socialAuth = create<socialAuth>()((set) => ({
     } = await supabase.auth.getUser();
 
     if (user) {
-      set({ credential: user.identities[0].identity_data.full_name });
+      const data = user?.identities?.[0].identity_data.full_name;
+      set({ credential: data });
     }
 
     if (error) {
