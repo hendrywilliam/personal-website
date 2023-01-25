@@ -1,18 +1,20 @@
 import { useEffect, useState } from "react";
-import { addCommentStore } from "~/lib";
-import { getCommentStore } from "~/lib";
+import { addCommentStore, getCommentStore, socialAuth } from "~/lib";
 import { Navbar } from "~/components";
 import { MainLayout } from "~/components";
-import { List } from "./components/Elements";
+import { List } from "./components";
 import { motion } from "framer-motion";
 import { useInView } from "react-intersection-observer";
 import { useAnimation } from "framer-motion";
+import { LoginForm } from "./components";
+import { useNavigate } from "react-router-dom";
 
 export const Guestbook = () => {
-  const [name, setName] = useState<string>("");
-  const [content, setContent] = useState<string>("");
   const { comments, getComments } = getCommentStore();
-  const { status, sendComment } = addCommentStore();
+  const [content, setContent] = useState<string>("");
+  const { sendComment } = addCommentStore();
+  const { loginGithub, getUser, credential, logout } = socialAuth();
+  const navigate = useNavigate();
 
   const { ref, inView } = useInView({
     threshold: 0.5,
@@ -27,17 +29,25 @@ export const Guestbook = () => {
           duration: 1,
         },
         opacity: 1,
-        y: 0,
       });
     }
 
     if (!inView) {
-      animation.start({ opacity: 0, y: -150 });
+      animation.start({ opacity: 0 });
     }
   }, [inView]);
 
+  const submitComment = (e: React.MouseEvent<HTMLButtonElement>) => {
+    e.preventDefault();
+    sendComment(credential, content);
+    setTimeout(() => {
+      getComments();
+    }, 2000);
+  };
+
   useEffect(() => {
     getComments();
+    getUser();
   }, []);
 
   return (
@@ -48,43 +58,54 @@ export const Guestbook = () => {
         className="pt-16 xl:pt-32 h-full flex justify-center items-center"
         animate={animation}
       >
-        <div className="w-full xl:w-1/4 flex flex-col gap-2 p-4 xl:p-0">
+        <div className="w-full xl:w-1/2 flex flex-col gap-2 p-4 xl:p-0">
           <p className="text-3xl xl:text-6xl font-extrabold">Guestbook.</p>
           <p>
-            Please <span className="font-bold">do not spam</span> and show some
-            respect.
+            Consider to leave a comment before you leaving. It could be anything
+            – appreciation, information, or even a joke.
           </p>
-          <input
-            className="text-sm xl:text-base pb-2 focus:outline-none bg-black border-b-2 border-white"
-            type="text"
-            placeholder="Your name"
-            onChange={(e) => setName(e.target.value)}
-            required
-          />
-          <textarea
-            className="text-sm xl:text-base pb-2 mt-3 focus:outline-none bg-black border-b-2 border-white resize-none"
-            placeholder="Your feedback"
-            onChange={(e) => setContent(e.target.value)}
-            required
-          />
-          <div className="text-end">
+          <LoginForm
+            textDisplay={
+              credential
+                ? `Hello, ${credential}!`
+                : "You have to login before comment."
+            }
+            displayButton={credential ? "hidden" : "flex"}
+            loginGithub={() => loginGithub()}
+          >
+            <div className="w-full">
+              <form
+                className={`${credential ? "flex" : "hidden"} flex-row gap-4`}
+              >
+                <input
+                  type="text"
+                  className="w-full px-2"
+                  onChange={(e) => setContent(e.target.value)}
+                />
+                <button
+                  type="submit"
+                  className="font-bold"
+                  onClick={(e: React.MouseEvent<HTMLButtonElement>) =>
+                    submitComment(e)
+                  }
+                >
+                  Post
+                </button>
+              </form>
+            </div>
+          </LoginForm>
+          <div className="w-full text-end">
             <button
-              className="disabled:opacity-25"
-              onClick={() => {
-                sendComment(name, content);
-                setTimeout(() => {
-                  getComments();
-                }, 2000);
-              }}
-              disabled={name && content ? false : true}
+              className={`${credential ? "inline" : "hidden"} font-bold`}
+              onClick={() => logout()}
             >
-              POST
+              Logout
             </button>
           </div>
         </div>
       </motion.div>
       <motion.div className="w-full h-max flex justify-center p-4">
-        <ul className="w-full xl:w-1/4 flex flex-col gap-2">
+        <ul className="w-full xl:w-1/2 flex flex-col gap-2">
           {comments.map((comment: any) => {
             return (
               <List
@@ -95,6 +116,7 @@ export const Guestbook = () => {
             );
           })}
         </ul>
+        <div id="end"></div>
       </motion.div>
     </MainLayout>
   );
