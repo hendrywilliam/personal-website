@@ -116,7 +116,6 @@ export const Guestbook = () => {
             );
           })}
         </ul>
-        <div id="end"></div>
       </motion.div>
     </MainLayout>
   );
