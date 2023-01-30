@@ -16,7 +16,7 @@ export const getCommentStore = create<addCommentProps>()((set) => ({
     let { data, error } = await supabase.from("guestbook").select("*");
 
     if (data) {
-      set({ comments: data });
+      set({ comments: data.reverse() });
     }
     if (error) {
       set({ comments: error });
