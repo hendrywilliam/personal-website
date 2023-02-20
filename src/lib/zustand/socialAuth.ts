@@ -2,17 +2,11 @@ import { create } from "zustand";
 import { supabase } from "../supabase";
 
 type SocialAuth = {
-  credential: object | null | string | undefined;
+  credential: object | null;
   status: string;
   loginGithub: () => void;
   getUser: () => void;
   logout: () => void;
-};
-
-type UserProps = {
-  user?: {
-    identities?: any;
-  };
 };
 
 const initialState = {

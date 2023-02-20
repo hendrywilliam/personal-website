@@ -1,8 +1,8 @@
-import { useEffect, useState } from "react";
+import { useEffect, useState, Suspense } from "react";
 import { addCommentStore, getCommentStore, socialAuth } from "~/lib";
 import { Navbar } from "~/components";
 import { MainLayout } from "~/components";
-import { List } from "./components";
+import { List, Loading } from "./components";
 import { motion } from "framer-motion";
 import { useInView } from "react-intersection-observer";
 import { useAnimation } from "framer-motion";
@@ -105,17 +105,23 @@ export const Guestbook = () => {
         </div>
       </motion.div>
       <motion.div className="w-full h-max flex justify-center p-4">
-        <ul className="w-full xl:w-1/2 flex flex-col gap-2">
-          {comments.map((comment: any) => {
-            return (
-              <List
-                key={comment.id}
-                name={comment.name}
-                content={comment.content}
-              />
-            );
-          })}
-        </ul>
+        <Suspense fallback={<Loading />}>
+          <ul className="w-full xl:w-1/2 flex flex-col gap-2">
+            {comments.map((comment: any) => {
+              const date = comment.created_at.slice(0, 10);
+              const time = comment.created_at.slice(11, 19);
+              return (
+                <List
+                  key={comment.id}
+                  name={comment.name}
+                  content={comment.content}
+                  date={date}
+                  time={time}
+                />
+              );
+            })}
+          </ul>
+        </Suspense>
       </motion.div>
     </MainLayout>
   );

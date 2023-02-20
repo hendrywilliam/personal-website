@@ -23,13 +23,6 @@ export const LandingSection = () => {
           duration: 2,
         },
       });
-      animation2.start({
-        opacity: 1,
-        x: 0,
-        transition: {
-          duration: 2,
-        },
-      });
       animation3.start({
         opacity: 1,
         y: 0,
@@ -57,13 +50,7 @@ export const LandingSection = () => {
             className="text-7xl lg:text-9xl font-extrabold tracking-tighter"
             animate={animation}
           >
-            Hendri
-          </motion.h2>
-          <motion.h2
-            className="text-7xl lg:text-9xl font-extrabold tracking-tighter"
-            animate={animation2}
-          >
-            William
+            HENDRI WILLIAM.
           </motion.h2>
           <motion.p className="text-md lg:text-base" animate={animation3}>
             A frontend engineer.
