@@ -39,22 +39,7 @@ export const Projects = () => {
             <p className="text-5xl xl:text-7xl font-extrabold">Projects.</p>
           </motion.div>
           <motion.div className="w-full xl:w-1/4">
-            <p className="text-md xl:text-lg mt-2">
-              During bootcamp, I collaborated with many people from different
-              background, and knowledge, we worked as a team and built many
-              projects, these are the projects that me and my teammates did
-              during bootcamp and also my personal projects:
-            </p>
-            <p className="text-md xl:text-lg mt-2 font-bold flex">
-              shopree{" "}
-              <a href="https://github.com/hendrywilliam/shopree">
-                <BiLinkExternal size={20} className={"ml-2 mt-1.5"} />
-              </a>
-            </p>
-            <p className="text-md xl:text-lg">
-              shopree (Shopping Spree) is a fake ecommerce where you can buy or
-              sell your goods. I'm still working on this one, hehe.
-            </p>
+            <p className="text-md xl:text-lg mt-2">These are my projects:</p>
             <p className="text-md xl:text-lg font-bold flex">
               Rawat Inap{" "}
               <a href="https://github.com/KamarRS-App/FrontEnd">
@@ -78,7 +63,9 @@ export const Projects = () => {
               still we managed to serve some features such as list for stays,
               book the property or rent your own property.
             </p>
-            <p className="mt-2">And many more...</p>
+            <p className="mt-2">
+              And many more, you can check my personal github.
+            </p>
           </motion.div>
         </motion.div>
       </Container>
